@@ -7,7 +7,7 @@ public class User {
 		String mailId;
 		String password;
 		String userType;
-		Long phoneNumber;
+		String phoneNumber;
 		String location;
 		
 		public static int status;	
@@ -17,7 +17,7 @@ public class User {
 		}
 		
 
-		public User(int userId, String userName, String mailId, String password, String userType, Long phoneNumber,
+		public User(int userId, String userName, String mailId, String password, String userType, String phoneNumber,
 				String location) {
 			super();
 			this.userId = userId;
@@ -71,11 +71,11 @@ public class User {
 			this.userType = userType;
 		}
 
-		public Long getPhoneNumber() {
+		public String getPhoneNumber() {
 			return phoneNumber;
 		}
 
-		public void setPhoneNumber(Long phoneNumber) {
+		public void setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 		}
 
@@ -87,11 +87,11 @@ public class User {
 			this.location = location;
 		}
 
-		public static int getStatus() {
+		public int getStatus() {
 			return status;
 		}
 
-		public static void setStatus(int status) {
+		public void setStatus(int status) {
 			User.status = status;
 		}
 		

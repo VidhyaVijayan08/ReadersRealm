@@ -4,16 +4,16 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Readers Realm</title>
 <style>
 	body{ 
 		margin:0px;
 	}
-	main{
-		background-image:url("bookslibrary.webp");
+	 main{
+		background-image:url("images/bookslibrary.webp");
 		background-size: cover;
 		background-repeat: no-repeat;
-		}
+		} 
 	li{
 		display: inline-block;
 		vertical-align: middle;
@@ -97,13 +97,12 @@
 <body>
 	<header class="header-container" >
 		<div class="logo-container">
-			<a href="index.html" class="logo-atag"><img src="logo.jpg" alt="Library Logo"class="logo-img" ></a>
+			<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 			</div>
-			<h1 style="text-align:center; display:inline-block; width: 60%;  padding: 0px 91px;">Library Application</h1>
-		
+			<h1 style="text-align:center; display:inline-block; width: 60%;  padding: 0px 91px;">Readers Realm</h1>	
 	</header>
 	<main>
-	<form action="SaveLibrary" method="get" style="margin: 0 auto; padding:90px 0px; color:#000000; font-size:16px;  font-weight:800; line-height:23px; width: 28%; border-color: #000000; border-width: 10px;">         
+	<form action="/login" method="post" style="margin: 0 auto; padding:90px 0px; color:#000000; font-size:16px;  font-weight:800; line-height:23px; width: 28%; border-color: #000000; border-width: 10px;">         
 	    <fieldset>
 	        <center> 
 	            <legend style="text-align: center">Login</legend>
@@ -115,7 +114,7 @@
 	        <center>
 	            <button style="margin:10px">Submit</button>
 	       		 <div class="footer-buttons" >Don't have an account? 
-	       		 	<a href="register.html" style="color:blue; text-decoration: none; ">Signup</a>
+	       		 	<a href="register.jsp" style="color:blue; text-decoration: none; ">Signup</a>
 	       		 </div>
 	            
 	        </center>     

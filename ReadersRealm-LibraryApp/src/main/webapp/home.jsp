@@ -86,25 +86,26 @@
 		<div class="logo-container">
 		<a href="index.html" class="logo-atag"><img src="logo.jpg" alt="Library Logo "class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block; width: 35%;  padding: 0px 91px;">Library Application</h1>
+		<h1 style="text-align:center; display:inline-block; width: 35%;  padding: 0px 91px;">Readers Realm</h1>
 		<nav class="nav" style="display:inline-block;">
 			<ul class="nav-ul">
 			<li class="nav-ul-li">
-			 <a href="library.jsp" style="text-decoration: none; color: black;">Card</a>								
+			<a href="library.jsp" style="text-decoration: none; color: black;">Card</a>								
 			</li>
 			
 			<li class="nav-ul-li">
-			 <a href="view.html" style="text-decoration: none; color: black;">EBook</a>								
+			 <a href="view.jsp" style="text-decoration: none; color: black;">EBook</a>								
 			</li>
 				<li class="nav-ul-li"><a href="viewBookCategory.jsp" style="text-decoration:none; color:black">Books</a></li>
-				<li class="nav-ul-li"><a href="about.html" style="text-decoration:none; color:black">About Us</a></li>
+				<li class="nav-ul-li"><a href="about.jsp" style="text-decoration:none; color:black">About Us</a></li>
   				<li class="nav-ul-li"><form action="LogoutServlet" method="post"><button>Logout</button></form></li>		
 			</ul> 
 		</nav>
 	</header>
 	<main>
 	<button class="extra">
-	<a href="view.html" style="text-decoration: none; color: black;">EBook</a></button>
+		<a href="view.jsp" style="text-decoration: none; color: black;">EBook</a>
+	</button>
 	</main>
 	<footer>
 	</footer>
