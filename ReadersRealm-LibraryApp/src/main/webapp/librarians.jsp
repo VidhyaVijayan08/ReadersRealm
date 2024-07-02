@@ -66,7 +66,7 @@
 		<h1 style="text-align:center; display:inline-block;   padding: 0 91px;">Library Application</h1>
 		<nav class="nav" style="display:inline-block;">
 			<ul class="nav-ul">	
-				<li class="nav-ul-li"><a href="user.jsp" style="text-decoration:none; color:black">Users</a></li>
+				<li class="nav-ul-li"><a href="listAllUsers" style="text-decoration:none; color:black">Users</a></li>
 				<li class="nav-ul-li"><a href="productCategory.jsp" style="text-decoration:none; color:black">Books</a></li>	
 				<li class="nav-ul-li"><a href="adminRequestView.jsp" style="text-decoration:none;  color:black">Requested Books</a></li>						
 				<li class="nav-ul-li"><form action="LogoutServlet" method="post"><button>Logout</button></form></li>	

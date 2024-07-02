@@ -1,6 +1,9 @@
 package com.chainsys.readersrealm.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import com.chainsys.readersrealm.dao.UserDAO;
 import com.chainsys.readersrealm.dao.UserImpl;
+import com.chainsys.readersrealm.model.Lending;
 import com.chainsys.readersrealm.model.User;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class MyController {
+public class UserController {
 	
 	@Autowired
 	UserDAO userDAO;
@@ -76,6 +81,67 @@ public class MyController {
         model.addAttribute("error", "Invalid credentials. Please try again.");
         return "login.html";
     }
+	
+	@GetMapping("/listAllUsers")
+    public String listAllUsers(Model model)
+    {
+        User user=new User();
+        List<User> users=userDAO.findUsers();
+        System.out.println(users);
+        model.addAttribute("users",users);
+        return "users.jsp";
+    }
 
-	}
+
+//	    @PostMapping("/approveBorrower")
+//	    public String approveBorrower(
+//	            @RequestParam("id") int userId,
+//	            @RequestParam("approval") String approval,
+//	            Model model) {
+//	        
+//	        Lending lending = new Lending();
+//	        lending.setUserId(userId);
+//	        lending.setStatus(approval);
+//
+//	        userDAO.approveBorrower(lending);
+//			List<Lending> list = userDAO.retrieveDetail();
+//			model.addAttribute("list", list);
+//			return "adminRequestView.jsp";
+//	    }
+
+//		@GetMapping("/deleteUser")
+//		public String deleteUser(@RequestParam("id") Integer id, Model model) {
+//		    userImpl.deleteUser(id);
+//			model.addAttribute("message", "User deleted");
+//			List<User> list = userImpl.retrieveUsers();
+//			model.addAttribute("list1", list);
+//			return "index";
+//		}
+//		
+//		 @GetMapping("/search")
+//		    public String searchUsers(@RequestParam("Name") String name, Model model) {
+//		        try {
+//		            List<User> list1 = userImpl.searchUsersByName(name);
+//		            model.addAttribute("list1", list1);
+//		        } catch (ClassNotFoundException | SQLException e) {
+//		            e.printStackTrace(); 
+//		        }
+//		        return "index"; 
+//		    }
+//		 
+//		 @GetMapping("/updateUser")
+//		    public String updateUser(HttpServletRequest request, Model model) throws IOException {
+//		        String name = request.getParameter("Name");
+//		        String emailId = request.getParameter("EmailId");
+//		        String phoneNo = request.getParameter("PhoneNumber");
+//		        User user = new User();
+//		        user.setUserName(name);
+//		        user.setMailId(emailId);
+//		        user.setPhoneNumber(phoneNo);
+//		        userImpl.updateUser(user);
+//				List<User> list1 = userImpl.retrieveDetails();
+//				model.addAttribute("list1", list1);
+//		        return "index"; 
+//		    }
+		}
 

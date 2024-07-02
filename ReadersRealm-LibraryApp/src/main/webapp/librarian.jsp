@@ -63,23 +63,25 @@
     <th colspan="2">Update</th>
 </tr>
 <% 
-	List<User> user =LibraryImpl.getFindLibrarian(null);
+	UserImpl userImpl = new UserImpl();
+	List<User> user = userImpl.findLibrarian(null);
 if (user != null && !user.isEmpty()) {
     for (User obj : user) {
 %>
 <tr>
-    <td><%= obj.getName() %></td>
-    <td><%= obj.getEmailId() %></td>
-    <td><%= obj.getType() %></td>
-    <td><%= obj.getPhoneNumber() %></td>
-    <td><%= obj.getLocation() %></td>
-    <td><%= obj.getGetStatus() %></td>
+<td><%= obj.getUserName() %></td>
+<td><%= obj.getMailId() %></td>
+<td><%= obj.getUserType() %></td>
+<td><%= obj.getPhoneNumber() %></td>
+<td><%= obj.getLocation() %></td>
+<td><%= obj.getStatus() %></td>
+
     <% 
-    if (obj.getGetStatus()==1){
+    if (obj.getStatus()==1){
     %>
     <td>
-       <form action="DeleteServlet" method="get">
-            <input type="hidden" class="delete-button" value=<%=obj.getId()%> name="id">
+       <form action="/deleteUser" method="get">
+            <input type="hidden" class="delete-button" value=<%= obj.getUserId() %> name="id">
             <input type="submit" class="delete-button" value="Delete" name="action">
         </form>
     </td>
