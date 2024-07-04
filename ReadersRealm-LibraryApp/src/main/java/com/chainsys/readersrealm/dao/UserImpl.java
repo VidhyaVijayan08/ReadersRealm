@@ -34,16 +34,6 @@ public class UserImpl implements UserDAO {
 	    int count = jdbcTemplate.queryForObject(query, Integer.class, user.getMailId(), user.getPassword());
 	    return count == 1;
 	}
-
-	
-	/*
-	 * public String checkUser(User user) { String select =
-	 * "SELECT user_password FROM users WHERE mail_id = ?"; Object[] params =
-	 * {user.getMailId()};
-	 * 
-	 * try { return jdbcTemplate.queryForObject(select, String.class, params); }
-	 * catch (EmptyResultDataAccessException e) { return null; } }
-	 */
 	 
 	 @Override
 	 public String checkPassword(User user) throws SQLException {
@@ -64,33 +54,10 @@ public class UserImpl implements UserDAO {
 	    }
 	
 	 
-//	 public static List<String> getAllCategory() throws ClassNotFoundException, SQLException {
-//	        List<String> categoryList = new ArrayList<>();
-//	        Connection connection = null;
-//	        PreparedStatement preparedStatement = null;
-//	        ResultSet resultSet = null;
-//	        try {
-//	            connection = ConnectUtil.getConnection();
-//	            String sql;
-//	            sql = "SELECT distinct book_category FROM book_details";
-//	            preparedStatement = connection.prepareStatement(sql);
-//	            resultSet = preparedStatement.executeQuery();
-//	            while (resultSet.next()) {
-//	                 categoryList.add(resultSet.getString("book_category"));
-//	            }
-//	        } finally {
-//	            if (resultSet != null) {
-//	                resultSet.close();
-//	            }
-//	            if (preparedStatement != null) {
-//	                preparedStatement.close();
-//	            }
-//	            if (connection != null) {
-//	                connection.close();
-//	            }
-//	        }
-//	        return categoryList;
-//	    }	
+	 public List<String> getAllCategory() {
+	        String sql = "SELECT distinct book_category FROM book_details";
+	        return jdbcTemplate.queryForList(sql, String.class);
+	 }
 	 
 	 
 	 public List<User> retrieveUsers() {
@@ -119,10 +86,13 @@ public class UserImpl implements UserDAO {
 	        }
 	    }
 	 
-	 public void deleteUser(Integer id) {
-	        String updateQuery = "UPDATE users SET status = 0 WHERE user_id = ? AND status = 1";
-	        jdbcTemplate.update(updateQuery, id);
-	    }
+	 public void delete(User user) 
+	 {
+	     String delete = "update users set status=0 where user_id=? and status=1";
+	     Object[] params = {user.getUserId()};
+	     System.out.println(params);
+	     jdbcTemplate.update(delete, params);  
+	 }
 	 
 	 public List<User> searchUsersByName(String name) throws ClassNotFoundException, SQLException {
 	        String sql = "SELECT user_name, mail_id, user_password, user_type, phone_number, location FROM users WHERE user_name LIKE ? AND status = 1";
@@ -130,15 +100,17 @@ public class UserImpl implements UserDAO {
 	 }
 	 
 	 public List<User> retrieveDetails() {
-	        String sql = "SELECT user_name, mail_id, user_password, user_type, phone_number, location " +
-	                     "FROM users " +
-	                     "WHERE status = 1";
+	        String sql = "SELECT user_name, mail_id, user_password, user_type, phone_number, location FROM users WHERE status = 1";
+	        return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(User.class));
+	    }
+	 public List<User> retrievesDetails() {
+	        String sql = "SELECT user_name, mail_id, user_password, user_type, phone_number, location FROM users WHERE user_type='librarian' and status = 1";
 	        return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(User.class));
 	    }
 	 
 	 public void updateUser(User user) {
-	        String updateQuery = "UPDATE users SET user_name = ? WHERE phone_number = ?";
-	        jdbcTemplate.update(updateQuery, user.getUserName(), user.getPhoneNumber());
+	        String updateQuery = "UPDATE users SET mail_id = ? WHERE phone_number = ?";
+	        jdbcTemplate.update(updateQuery, user.getMailId(), user.getPhoneNumber());
 	    }
 	 
 	 public List<String> getAllCategories() {
@@ -147,9 +119,18 @@ public class UserImpl implements UserDAO {
 	    }
 	 
 	 public List<User> findUsers() {
-	        String sql = "SELECT user_id, user_name, mail_id, user_password, user_type, phone_number, location, status FROM users WHERE user_type = 'user'";
+	        String sql = "SELECT user_id, user_name, mail_id, user_password, user_type, phone_number, location, status FROM users WHERE user_type = 'user' and status=1";
 	        List <User> userList = jdbcTemplate.query(sql, new UserMapper());
 	        System.out.println(userList);
-	            return userList;
+	        return userList;
 	 }
+	 
+	 public List<User> findLibrarians(){
+		 String sql = "SELECT user_id, user_name, mail_id, user_password, user_type, phone_number, location, status FROM users WHERE user_type = 'librarian' and status=1";
+	        List <User> userList = jdbcTemplate.query(sql, new UserMapper());
+	        System.out.println(userList);
+	        return userList;
+	}
+	 
+
 }

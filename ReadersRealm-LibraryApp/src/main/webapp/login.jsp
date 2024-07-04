@@ -89,7 +89,7 @@ button{
 <body> 
 <header class="header-container" >
 		<div class="logo-container">
-			<a href="index.jsp" class="logo-atag"><img src="logo.jpg" alt="Library Logo"class="logo-img" ></a>
+			<a href="index.jsp" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 			</div>
 			<h1 style="text-align:center; display:inline-block;   padding: 0 91px;">Library Application</h1>
 	</header>
@@ -104,19 +104,18 @@ button{
 	        <input type="email" name="EmailId" id="Email" placeholder="Enter Your Username" class="input" style="padding: 8px; border-radius: 5px;" required><br>
 	     	<label for="password">Password:</label><br>
 	        <input type="password" name="password"  id="password" placeholder="Enter Your Password" class="input" required><br>
-				        <input type="hidden"  name="action" value="login">
+			<input type="hidden"  name="action" value="login">
 			
 	        <center>
 	            <button style="margin:10px">Submit</button>
 	           <a href="register.jsp" style="color:black">New User</a>
-	            
 	        </center> 
 	            
 	    </fieldset> 
 	    </form>
     </main>
     <footer>
-      	<span class="footer-buttons" color:violet>New user? <a href="register.jsp">Signup</a></span>
+      	<span class="footer-buttons">New user? <a href="register.jsp">Signup</a></span>
     </footer>
 </body>
 </html>

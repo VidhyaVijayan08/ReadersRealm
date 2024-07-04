@@ -29,8 +29,6 @@ public class User {
 			this.location = location;
 		}
 
-
-
 		public int getUserId() {
 			return userId;
 		}

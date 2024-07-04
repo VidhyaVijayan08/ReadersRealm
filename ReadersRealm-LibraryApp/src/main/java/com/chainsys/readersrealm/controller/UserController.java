@@ -25,6 +25,7 @@ public class UserController {
 	
 	@Autowired
 	UserDAO userDAO;
+	@Autowired
 	UserImpl userImpl;
 
 	@RequestMapping("/")
@@ -82,66 +83,86 @@ public class UserController {
         return "login.html";
     }
 	
-	@GetMapping("/listAllUsers")
-    public String listAllUsers(Model model)
+	@GetMapping("/deleteUser")
+    public String deleteUser(HttpServletRequest request, Model model) throws IOException {
+        String userIdString = request.getParameter("id");
+
+        if (userIdString != null && !userIdString.isEmpty()) {
+            try {
+                int userId = Integer.parseInt(userIdString);
+
+                User userToDelete = new User();
+                userToDelete.setUserId(userId);
+
+                userImpl.delete(userToDelete);
+
+                List<User> users = userDAO.findUsers();
+
+                model.addAttribute("users", users);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid user ID format: " + userIdString);
+            }
+        } else {
+            System.err.println("User ID parameter is missing or empty.");
+        }
+
+        return "users.jsp";
+    }
+	
+	@GetMapping("/deletes")
+    public String delete(@RequestParam ("id") int id, Model model)
     {
-        User user=new User();
+        User users1 = new User();      
+        users1.setUserId(id);      
+        userImpl.delete(users1); 
+        System.out.println("getting datas");
         List<User> users=userDAO.findUsers();
         System.out.println(users);
         model.addAttribute("users",users);
         return "users.jsp";
     }
-
-
-//	    @PostMapping("/approveBorrower")
-//	    public String approveBorrower(
-//	            @RequestParam("id") int userId,
-//	            @RequestParam("approval") String approval,
-//	            Model model) {
-//	        
-//	        Lending lending = new Lending();
-//	        lending.setUserId(userId);
-//	        lending.setStatus(approval);
-//
-//	        userDAO.approveBorrower(lending);
-//			List<Lending> list = userDAO.retrieveDetail();
-//			model.addAttribute("list", list);
-//			return "adminRequestView.jsp";
-//	    }
-
-//		@GetMapping("/deleteUser")
-//		public String deleteUser(@RequestParam("id") Integer id, Model model) {
-//		    userImpl.deleteUser(id);
-//			model.addAttribute("message", "User deleted");
-//			List<User> list = userImpl.retrieveUsers();
-//			model.addAttribute("list1", list);
-//			return "index";
-//		}
-//		
-//		 @GetMapping("/search")
-//		    public String searchUsers(@RequestParam("Name") String name, Model model) {
-//		        try {
-//		            List<User> list1 = userImpl.searchUsersByName(name);
-//		            model.addAttribute("list1", list1);
-//		        } catch (ClassNotFoundException | SQLException e) {
-//		            e.printStackTrace(); 
-//		        }
-//		        return "index"; 
-//		    }
-//		 
-//		 @GetMapping("/updateUser")
-//		    public String updateUser(HttpServletRequest request, Model model) throws IOException {
-//		        String name = request.getParameter("Name");
-//		        String emailId = request.getParameter("EmailId");
-//		        String phoneNo = request.getParameter("PhoneNumber");
-//		        User user = new User();
-//		        user.setUserName(name);
-//		        user.setMailId(emailId);
-//		        user.setPhoneNumber(phoneNo);
-//		        userImpl.updateUser(user);
-//				List<User> list1 = userImpl.retrieveDetails();
-//				model.addAttribute("list1", list1);
-//		        return "index"; 
-//		    }
+	
+	@GetMapping("/listAllUsers")
+    public String listAllUsers(Model model)
+    {
+        List<User> users=userDAO.findUsers();
+        System.out.println(users);
+        model.addAttribute("users",users);
+        return "users.jsp";
+    }
+	
+	@GetMapping("/listAllLibrarians")
+    public String listAllLibrarian(Model model)
+    {
+        List<User> users=userDAO.findLibrarians();
+        System.out.println(users);
+        model.addAttribute("users",users);
+        return "librarian.jsp";
+    }
+		 
+		 @GetMapping("/updateUser")
+		    public String updateUser(HttpServletRequest request, Model model) throws IOException {
+		        String mailId = request.getParameter("MailId");
+		        String phoneNo = request.getParameter("PhoneNumber");
+		        User user = new User();
+		        user.setMailId(mailId);
+		        user.setPhoneNumber(phoneNo);
+		        userDAO.updateUser(user);
+				List<User> users = userDAO.retrieveDetails();
+				model.addAttribute("users", users);
+		        return "users.jsp"; 
+		    }
+		 
+		 @GetMapping("/updateLibrarian")
+		    public String updateLibrarian(HttpServletRequest request, Model model) throws IOException {
+		        String mailId = request.getParameter("MailId");
+		        String phoneNo = request.getParameter("PhoneNumber");
+		        User user = new User();
+		        user.setMailId(mailId);
+		        user.setPhoneNumber(phoneNo);
+		        userDAO.updateUser(user);
+				List<User> users = userDAO.retrievesDetails();
+				model.addAttribute("users", users);
+		        return "librarian.jsp"; 
+		    }
 		}
-

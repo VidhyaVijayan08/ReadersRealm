@@ -10,7 +10,7 @@
 		margin:0px;
 	}
 	 main{
-		background-image:url("images/bookslibrary.webp");
+		background-image:url("images/graphicsillustrations_zoom_library_backgrounds01s.webp");
 		background-size: cover;
 		background-repeat: no-repeat;
 		} 
@@ -57,73 +57,89 @@
 		display: inline-block;
 		vertical-align: middle;
 	}
-		
-	.logo-img{
-		height: 135px;
+	
+	.logo-img {
+    	height: 95px;
 	}
 	
 	legend{
+		padding: 11px 0px;
 		font-size: 22px;
 	    font-weight: 800;
 	}
 	
 	label{
 		font-size: 19px;
-	    line-height: 21px;
+	    line-height: 30px;
 	}
 		
-	header{
-		height: 135px;
+	
+	header {
+	    height: 135px;
+	    background-color: gray;
 	}
 	
 	fieldset {
-	    margin: 65px 0 10px 0;
+	    margin: 65px 0px 10px 0px;
 	    background: white;
 	    border: 1px solid white;
 	    border-radius: 19px;
 	}
 	
 	button{
-		margin: 10px;
-	    background-color: darkgoldenrod;
+		margin: 20px;
+	    background-color: black;
 	    border: 1px solid darkgoldenrod;
-	    border-radius: 22px;
+	    border-radius: 10px;
 	    color: white;
 	    padding: 9px 32px;
 	}
+	.logo-atag{
+		display: inline-block;
+	    vertical-align: middle;
+	    padding: 15px 0;
+	}
 	
+	footer{
+		background-color: gray;
+		color: white;
+	    padding: 21px 0;
+	    font-size: 19px;
+	    text-align: center;
+	}
 </style>
 </head>
 <body>
 	<header class="header-container" >
-		<div class="logo-container">
-			<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
+		<div class="container-logo" style="width: 30%; margin: 0 auto;">
+			<div class="logo-container">
+				<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 			</div>
-			<h1 style="text-align:center; display:inline-block; width: 60%;  padding: 0px 91px;">Readers Realm</h1>	
+			<h1 style="text-align:center; display:inline-block; color:white;  padding: 0px;">Readers Realm</h1>	
+		</div>
 	</header>
 	<main>
 	<form action="/login" method="post" style="margin: 0 auto; padding:90px 0px; color:#000000; font-size:16px;  font-weight:800; line-height:23px; width: 28%; border-color: #000000; border-width: 10px;">         
 	    <fieldset>
 	        <center> 
-	            <legend style="text-align: center">Login</legend>
+	            <legend style="text-align: center; ">Login</legend>
 	        </center>
 	        <label for="username">Email Id:</label><br>
-	        <input type="email" name="EmailId" id="Email" placeholder="Enter Your Email ID" required><br>
+	        <input type="email" name="EmailId" id="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z]{2,}$" placeholder="Enter Your Email ID" required><br>
 	     	<label for="password">Password:</label><br>
-	        <input type="password" name="password" id="password" placeholder="Enter Your Password" required><br>			
+	        <input type="password" name="password" id="password" pattern="[A-Za-z0-9]{6,10}" placeholder="Enter Your Password" required><br>			
 	        <center>
 	            <button style="margin:10px">Submit</button>
 	       		 <div class="footer-buttons" >Don't have an account? 
 	       		 	<a href="register.jsp" style="color:blue; text-decoration: none; ">Signup</a>
 	       		 </div>
-	            
 	        </center>     
 	    </fieldset> 
 	    </form>
 	</main>
 	
-	<footer>
-	 &copy; 
-    </footer>
+	<footer style="color: white">
+ 	 &copy;  ReadersRealm.com / All rights reserved
+     </footer>
 </body>
 </html>

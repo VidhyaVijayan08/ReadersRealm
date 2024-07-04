@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
- <%@page import="com.chainsys.readersrealm.model.User" %>
-    <%@ page import="java.util.ArrayList, com.chainsys.readersrealm.dao.UserImpl" %>
-    <%@ page import="java.util.List"%>
+<%@page import="com.chainsys.readersrealm.model.User" %>
+<%@ page import="java.util.ArrayList, com.chainsys.readersrealm.dao.UserImpl" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
 <style>
 
 	body{
@@ -59,14 +58,12 @@
     <th>Type</th>
     <th>PhoneNumber</th>
     <th>Location</th>
-    <th>Status</th>
     <th colspan="2">Update</th>
 </tr>
-<% 
-	UserImpl userImpl = new UserImpl();
-	List<User> user = userImpl.findLibrarian(null);
-if (user != null && !user.isEmpty()) {
-    for (User obj : user) {
+<% List<User> users=(ArrayList<User>)request.getAttribute("users");
+if (users != null && !users.isEmpty()) {
+	for(User obj: users)
+	{
 %>
 <tr>
 <td><%= obj.getUserName() %></td>
@@ -74,13 +71,12 @@ if (user != null && !user.isEmpty()) {
 <td><%= obj.getUserType() %></td>
 <td><%= obj.getPhoneNumber() %></td>
 <td><%= obj.getLocation() %></td>
-<td><%= obj.getStatus() %></td>
 
     <% 
     if (obj.getStatus()==1){
     %>
     <td>
-       <form action="/deleteUser" method="get">
+       <form action="/delete" method="get">
             <input type="hidden" class="delete-button" value=<%= obj.getUserId() %> name="id">
             <input type="submit" class="delete-button" value="Delete" name="action">
         </form>
@@ -89,7 +85,7 @@ if (user != null && !user.isEmpty()) {
     }
     	%>
     <td>
-    <button><a href="edit.html" style="text-decoration:none; color:black;">Edit</a> </button>
+    <button><a href="editLibrarian.jsp" style="text-decoration:none; color:black;">Edit</a> </button>
     
     </td>
 </tr>
