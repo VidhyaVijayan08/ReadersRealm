@@ -12,6 +12,7 @@
 		background-size: cover;
 		margin:0px;
 	}
+	
 	fieldset{
 		border: 4px solid white;
 		    margin: 123px 0px;
@@ -20,6 +21,7 @@
 	body{
 		margin:0px;
 	}
+	
 	li{
 		display: inline-block;
 		vertical-align: middle;
@@ -55,9 +57,6 @@
 	  display: block;
 	}
 	
-	.dropdown li:hover {
-	}
-	
 	li:hover .dropdown {
 	  display: block;
 	}
@@ -80,13 +79,13 @@
 			<h1 style="text-align:center; display:inline-block;   padding: 0 91px;">Library Application</h1>
 	</header>
 	<main>
-		<form action="RequestServlet" method="get" style="margin: 0 auto; color:#ffffff; font-size:16px;padding: 51px 0 51px 450px; font-weight:800; line-height:23px; width: 28%; border-color: #ffffff; border-width: 10px;">         
+		<form action="saveRequestForm" style="margin: 0 auto; color:#ffffff; font-size:16px;padding: 51px 0 51px 450px; font-weight:800; line-height:23px; width: 28%; border-color: #ffffff; border-width: 10px;">         
 		    <fieldset>
 		        <center>
 		            <legend>Request Book Form</legend>
 		        </center>
-		        <label for="LenderId">Lender Id:</label><br>
-		        <input type="text" name="LenderId" id="LenderId" placeholder="Enter Your Lender ID :" required><br>
+		        <label for="UserId">Lender Id:</label><br>
+		        <input type="text" name="UserId" id="LenderId" placeholder="Enter Your Lender ID :" required><br>
 		        <label for="BookId">Book ID:</label><br>
 		        <input type="text" name="BookId" id="BookId" placeholder="Enter Your Book Id :" required><br>
 		        <label for="Date">Date:</label><br>

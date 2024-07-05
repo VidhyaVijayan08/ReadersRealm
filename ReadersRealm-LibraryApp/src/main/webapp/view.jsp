@@ -25,11 +25,11 @@
 		}
 		
 		h1{
-		text-align: center;
-	    display: inline-block;
-	    vertical-align: middle;
-	    padding: 0px 91px;
-	    width: 60%;
+			text-align: center;
+		    display: inline-block;
+		    vertical-align: middle;
+		    padding: 0px 91px;
+		    width: 60%;
 		}
 		
 		
@@ -49,43 +49,45 @@
 		
 		header{
 			height: 135px;
+			background-color:gray;
 		}
-.card {
-	color: #000;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	padding: 10px;
-	margin: 10px;
-	width: 200px;
-	display: inline-block;
-	cursor: pointer;
-	transition: transform 0.2s;
-}
-
-.card img {
-	max-width: 100%;
-	height: 300px;
-	object-fit: cover;
-}
-
-.card:hover {
-	transform: scale(1.05);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+		.card {
+			color: #000;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 10px;
+			margin: 10px;
+			width: 200px;
+			display: inline-block;
+			cursor: pointer;
+			transition: transform 0.2s;
+		}
+		
+		.card img {
+			max-width: 100%;
+			height: 300px;
+			object-fit: cover;
+		}
+		
+		.card:hover {
+			transform: scale(1.05);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
 </style>
 <body>
 <header class="header-container">
 		<div class="logo-container">
-			<a href="index.html" class="logo-atag"><img src="logo.jpg" alt="Library Logo"class="logo-img" ></a>
+			<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block;   padding: 0 91px;">Library Application</h1>
+		<h1 style="text-align:center; display:inline-block; color:white;  padding: 0 91px;">Library Application</h1>
 	
 	</header>
 	<main>
+	<div class="container-banner">
 		<div class="banner-container">
 			<img alt="banner" src="images/banner2.jpg" class="banner-image" style="width: 100%">
 		</div>	
-	</main>
+	</div>
 <div class="card-section">
 	<a class="iframeLink" href="https://kvinshamlalibrary.wordpress.com/wp-content/uploads/2020/07/tenali-raman-.pdf"> 
 		<div class="card">
@@ -193,6 +195,10 @@
 			</div>
 		</a>
 	</div>
+		</main>
+			<footer style="color: white">
+		 	 	&copy;  ReadersRealm.com / All rights reserved
+		     </footer>
 	
 </body>
 </html>

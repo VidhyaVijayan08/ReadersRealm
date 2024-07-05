@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
 <style>
 		body{ 
 			margin:0px;
@@ -48,6 +48,7 @@
 		
 		header{
 			height: 135px;
+			background-color: gray;
 		}
 		
 		.nav-ul {
@@ -84,21 +85,16 @@
 <body>
 <header class="header-container">
 		<div class="logo-container">
-		<a href="index.html" class="logo-atag"><img src="logo.jpg" alt="Library Logo "class="logo-img" ></a>
+		<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block; width: 35%;  padding: 0px 91px;">Readers Realm</h1>
+		<h1 style="text-align:center; display:inline-block; width: 28%; color:white; padding: 0px 91px;">Readers Realm</h1>
 		<nav class="nav" style="display:inline-block;">
 			<ul class="nav-ul">
-			<li class="nav-ul-li">
-			<a href="library.jsp" style="text-decoration: none; color: black;">Card</a>								
-			</li>
-			
-			<li class="nav-ul-li">
-			 <a href="view.jsp" style="text-decoration: none; color: black;">EBook</a>								
-			</li>
-				<li class="nav-ul-li"><a href="viewBookCategory.jsp" style="text-decoration:none; color:black">Books</a></li>
-				<li class="nav-ul-li"><a href="about.jsp" style="text-decoration:none; color:black">About Us</a></li>
-  				<li class="nav-ul-li"><form action="LogoutServlet" method="post"><button>Logout</button></form></li>		
+				<li class="nav-ul-li"><a href="library.jsp" style="text-decoration: none; color: white;">Card</a></li>
+				<li class="nav-ul-li"><a href="view.jsp" style="text-decoration: none; color: white;">EBook</a></li>
+				<li class="nav-ul-li"><a href="books" style="text-decoration:none; color:white">Books</a></li>
+				<li class="nav-ul-li"><a href="about.jsp" style="text-decoration:none; color:white">About Us</a></li>
+  				<li class="nav-ul-li"><form action="login.jsp"><button style="color:white">Logout</button></form></li>		
 			</ul> 
 		</nav>
 	</header>

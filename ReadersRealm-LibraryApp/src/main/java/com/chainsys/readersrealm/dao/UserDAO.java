@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.chainsys.readersrealm.model.Book;
 import com.chainsys.readersrealm.model.Lending;
 import com.chainsys.readersrealm.model.User;
 
@@ -23,5 +24,7 @@ public interface UserDAO {
 	public void updateUser(User user);
 	public List<User> retrieveDetails();
 	public List<User> retrievesDetails();
+	void saveBook(Book book) throws SQLException;
+	  public void saveRequestForm(Lending lending);
 
 }

@@ -60,7 +60,7 @@
     <th>Location</th>
     <th colspan="2">Update</th>
 </tr>
-<% List<User> users=(ArrayList<User>)request.getAttribute("users");
+<% List<User> users=(ArrayList<User>)request.getAttribute("userss");
 if (users != null && !users.isEmpty()) {
 	for(User obj: users)
 	{
@@ -76,7 +76,7 @@ if (users != null && !users.isEmpty()) {
     if (obj.getStatus()==1){
     %>
     <td>
-       <form action="/delete" method="get">
+       <form action="/deleteLibrarian" method="get">
             <input type="hidden" class="delete-button" value=<%= obj.getUserId() %> name="id">
             <input type="submit" class="delete-button" value="Delete" name="action">
         </form>
@@ -85,8 +85,9 @@ if (users != null && !users.isEmpty()) {
     }
     	%>
     <td>
-    <button><a href="editLibrarian.jsp" style="text-decoration:none; color:black;">Edit</a> </button>
-    
+    <button>
+    	<a href="editLibrarian.jsp" style="text-decoration:none; color:black;">Edit</a> 
+    </button>
     </td>
 </tr>
 <%

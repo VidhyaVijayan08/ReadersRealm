@@ -3,6 +3,8 @@
 <%@ page
 	import="java.sql.*, java.io.*, java.util.Base64, com.chainsys.readersrealm.dao.UserImpl, com.chainsys.readersrealm.model.Book"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -153,41 +155,34 @@ h2 {
 		</div>
 
 		<%
-		try {
-/* 			System.out.println("View Book Title" + request.getParameter("category"));
- */			String category1 = request.getParameter("category");
-			Book books = new Book();
-			List<Book> bookList = LibraryImpl.getAllBooks(category1);
-
-			for (Book book : bookList) {
+ 			
+			List<Book> books=(ArrayList<Book>)request.getAttribute("bookList");
+ 			/* String category1 = request.getParameter("category"); */
+			/* Book books = new Book();
+			UserImpl userImpl = new UserImpl();
+			
+			List<Book> bookList = userImpl.getAllBooks(category1);
+ */
+			for (Book book : books) {
 				String category = book.getBookCategory();
 				byte[] imageBytes = book.getBookCover();
-				String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+		
+			  String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 		%>
 		<div class="card">
 			<img src="data:image/jpeg;base64,<%=base64Image%>" alt="Book Cover">
-			<div class="card-details">
+ 			<div class="card-details">
 				<h3><%=book.getBookTitle()%></h3>
 				<p>
 					Category:
 					<%=category%></p>
-				<%
-				// book_id
-				// user_id
-				// insert into lending_details(lending_id, book_id, lender_id, borrower_id) values (?,?,?,?)
-				%>
-				
 				<form action="viewmore.jsp" method="get">
-                    <input type="hidden" name="bookid" value="<%= book.getBookId() %>">
+                    <input type="hidden" name="bookid" value="<%=book.getBookId() %>">
 				 	<input type="submit" class="search-button" value="View More" name="action">
 				</form>
-				
 			</div>
 		</div>
 		<%
-		}
-		} catch (SQLException | ClassNotFoundException ex) {
-		ex.printStackTrace();
 		}
 		%>
 	</main>

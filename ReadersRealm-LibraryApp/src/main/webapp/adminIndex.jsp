@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
+	<style>
 		body{
 			margin:0px;
 		}
@@ -31,7 +31,6 @@
 		    padding: 0px 91px;
 		}
 		
-		
 		.nav-ul{
 			display:inline-block;
 			vertical-align: middle;
@@ -48,7 +47,9 @@
 		
 		header{
 			height: 135px;
+			background-color: gray;
 		}
+		
 		button{
 			cursor: pointer;
 		    background: none;
@@ -60,26 +61,27 @@
 	</style>
 </head>
 <body> 
-<header class="header-container">
+	<header class="header-container">
 		<div class="logo-container">
-		<a href="index.html" class="logo-atag"><img src="logo.jpg" alt="Library Logo "class="logo-img" ></a>
+			<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block;   padding: 0 91px;">Library Application</h1>
+		<h1 style="text-align:center; display:inline-block; color: white;  padding: 0px 91px;">Library Application</h1>
 		<nav class="nav" style="display:inline-block;">
 			<ul class="nav-ul">
-				<li class="nav-ul-li"><a href="listAllLibrarians" style="text-decoration:none; color:black">Librarian</a></li>
-				<li class="nav-ul-li"><a href="listAllUsers" style="text-decoration:none; color:black">Users</a></li>
-				<li class="nav-ul-li"><a href="productCategory.jsp" style="text-decoration:none; color:black">Books</a></li>	
-				<li class="nav-ul-li"><a href="adminRequestView.jsp" style="text-decoration:none;  color:black">Requested Books</a></li>						
-				<li class="nav-ul-li"><form action="LogoutServlet" method="post"><button>Logout</button></form></li>	
+				<li class="nav-ul-li"><a href="listAllLibrarians" style="text-decoration:none; color:white">Librarian</a></li>
+				<li class="nav-ul-li"><a href="listAllUsers" style="text-decoration:none; color:white">Users</a></li>
+				<li class="nav-ul-li"><a href="/books" style="text-decoration:none; color:white">Books</a></li>	
+				<li class="nav-ul-li"><a href="showRequestForm" style="text-decoration:none;  color:white">Requested Books</a></li>						
+				<li class="nav-ul-li"><form action="LogoutServlet" method="post"><button style="color: white;">Logout</button></form></li>	
 			</ul>
 		</nav>
 	</header>
 	<main>
 	</main>
 	
-	<footer>
-	</footer>
+	<footer style="color: white">
+ 	 &copy;  ReadersRealm.com / All rights reserved
+     </footer>
 
 </body>
 </html>
