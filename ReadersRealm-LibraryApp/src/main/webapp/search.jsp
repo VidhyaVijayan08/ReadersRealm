@@ -3,6 +3,8 @@
 <%@ page
 	import="java.sql.*, java.io.*, java.util.Base64, com.chainsys.readersrealm.dao.UserImpl, com.chainsys.readersrealm.model.Book"%>
 <%@ page import="java.util.List"%>
+<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
+<%@ page import="org.springframework.context.ApplicationContext" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,13 +124,10 @@ h2 {
 			<ul class="nav-ul">
 				<li class="nav-ul-li"><a href="view.html"
 					style="text-decoration: none; color: black;">EBook</a></li>
-
 				<li class="nav-ul-li"><a href="userProductCategory.jsp"
 					style="text-decoration: none; color: black">Books Category</a></li>
 				<li class="nav-ul-li"><a href="about.html"
 					style="text-decoration: none; color: black">About Us</a></li>
-
-	
 				<li class="nav-ul-li"><form action="LogoutServlet"
 						method="post">
 						<button>Logout</button>
@@ -141,9 +140,10 @@ h2 {
 <main>
 	<h2>Products</h2>
 	<%
+	   ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+	UserImpl userImpl = (UserImpl) context.getBean("userImpl");
   String bookTitle=request.getParameter("BookTitle");	
-	try {
-			List<Book> bookList = LibraryImpl.searchServlet(bookTitle);
+			List<Book> bookList = userImpl.searchServlet(bookTitle);
 
 			for (Book book : bookList) {
 				String category = book.getBookCategory();
@@ -155,15 +155,12 @@ h2 {
                 <div class="card-details">
                     <h3><%= book.getBookTitle() %></h3>
                     <p>Category: <%= book.getBookCategory() %></p>
-                    <a href="requestform.html">
+                    <a href="requestForm.jsp">
                         <input type="submit" class="search-button" value=" Request" name="action">
                     </a>
                 </div> 
             </div>
 		<%
-		}
-		} catch (SQLException | ClassNotFoundException ex) {
-		ex.printStackTrace();
 		}
 		%>
 </main>

@@ -2,7 +2,6 @@ package com.chainsys.readersrealm.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 import com.chainsys.readersrealm.dao.UserDAO;
@@ -188,6 +186,13 @@ public class UserController {
 		return "viewBook.jsp";
 	}
 
+	@GetMapping("/book")
+	public String getBooks(@RequestParam(required = false) String category, Model model) {
+		List<Book> bookList = userImpl.getAllBooks(category);
+		model.addAttribute("bookList", bookList);
+		return "viewMore.jsp";
+	}
+
 	@PostMapping("/saveBook")
 	public String saveBook(@RequestParam("bookId") int bookId, @RequestParam("bookTitle") String bookTitle,
 			@RequestParam("authorId") int authorId, @RequestParam("bookCategory") String bookCategory,
@@ -251,6 +256,19 @@ public class UserController {
 			return "error-page";
 		}
 	}
+	
+	@GetMapping("/showUserRequestForm")
+	public String showUserRequestForm(Model model) {
+		try {
+			List<Lending> list = userImpl.retrieveDetail();
+			System.out.println(list);
+			model.addAttribute("lists1", list);
+			return "userShowRequest.jsp";
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			return "error-page";
+		}
+	}
 
 	@GetMapping("/bookViewMore")
 	public String showViewMore(@RequestParam("BookId") String bookId, Book book, Model model) {
@@ -277,5 +295,21 @@ public class UserController {
 		model.addAttribute("lists1", list);
 		return "adminRequestView.jsp";
 	}
+	
+	@GetMapping("/search")
+    public String selectUser(@RequestParam("SearchName") String search,Model model)
+    {
+        List<User> users=userDAO.selectUser(search);
+        model.addAttribute("users",users);
+        return "users.jsp";
+    }
+
+	@GetMapping("/searchlibrarian")
+    public String selectLibrarian(@RequestParam("SearchName") String search,Model model)
+    {
+        List<User> users=userDAO.selectUser(search);
+        model.addAttribute("users",users);
+        return "users.jsp";
+    }
 
 }

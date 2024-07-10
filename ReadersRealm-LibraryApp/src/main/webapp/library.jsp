@@ -6,14 +6,12 @@
 <meta charset="ISO-8859-1">
 <title>Use The Library</title>
 <style type="text/css">
-
-
-		.nav-ul-li-atag{
-			display: inline-block;
+		.nav-ul-li-atag {
+		    display: inline-block;
 		    list-style: none;
 		    padding: 0px 11px;
-		    font-size: 22px;
-	    	font-weight: 800;	
+		    font-size: 24px;
+		    font-weight: 800;
 		}
 		
 		h1{
@@ -45,240 +43,233 @@
 		.nav-ul {
     		display: inline-block;
     		vertical-align: middle;
-    	padding: 0px;
+    		padding: 0px;
 		}
-		button{
-			cursor: pointer;
+		button {
+		    cursor: pointer;
 		    background: none;
 		    border: none;
-		    font-size: 19px;
+		    font-family: none;
+		    font-size: 23px;
 		    font-weight: 600;
 		}
-body {
-	margin: 0px;
-}
-
-.image-sections {
-	display: inline-block;
-	width: 43%;
-}
-
-.nav-ul-li {
-	list-style: none;
-	font-size: 20px;
-	padding: 31px;
-	display: inline-block;
-	font-weight: 800;
-}
-
-ul {
-	margin: 0px;
-	padding: 0px;
-}
-
-.physical-card-image {
-	width: 100%;
-}
-
-.image-section {
-	width: 47%;
-	display: inline-block;
-	vertical-align: top;
-}
-
-.card-para-block {
-	width: 48%;
-	display: inline-block;
-	margin-left: 41px;
-}
-
-.content {
-	width: 51%;
-	display: inline-block;
-	vertical-align: top;
-	font-size: 20px;
-	margin-left: 43px;
-	line-height: 33px;
-}
-
-.nav {
-	width: 90%;
-	margin: 0 auto;
-}
-
-.library-card-span {
-	font-weight: 800;
-}
-
-#contain-section {
-	background-color: black;
-	color: white;
-	padding: 30px 0px;
-}
-
-.container-section {
-	width: 90%;
-	margin: 0 auto;
-	padding: 5px;
-}
-
-.section-container {
-	width: 75%;
-	margin: 0 auto;
-	padding: 10px 0px;
-}
-
-.li-atag {
-	color: white;
-}
-
-.digital-card {
-	width: 100%;
-}
-
-.physical-card-image {
-	
-}
-
-#container {
-	background-color: antiquewhite;
-	padding: 5px;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-body {
-	font-family: Arial, sans-serif;
-}
-
-.accordion-item {
-	border-bottom: 1px solid #ccc;
-}
-
-.accordion-title {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 24px;
-	cursor: pointer;
-}
-
-.accordion-title h2 {
-	margin: 0;
-}
-
-.accordion-btn {
-	background: none;
-	color: white;
-	border: none;
-	cursor: pointer;
-	font-size: 20px;
-	line-height: 1;
-}
-
-.accordion-btns {
-	background: none;
-	color: black;
-	border: none;
-	cursor: pointer;
-	font-size: 20px;
-	line-height: 1;
-}
-
-.accordion-content {
-	padding: 10px;
-	display: none; /* Hide content by default */
-}
-
-.active {
-	display: block; /* Show content when active */
-}
-
-.digital-button {
-	padding: 11px 20px;
-	background-color: black;
-	color: white;
-	font-size: 17px;
-	font-weight: 800;
-}
-
-.paras {
-	font-size: 21px;
-	margin: 0px;
-	padding: 21px 0px;
-}
-
-.para {
-	margin: 0px;
-}
-
-.heading {
-	margin: 0px;
-}
-
-.temporary-card {
-	display: inline-block;
-	width: 49%;
-	vertical-align: top;
-}
-
-.accordion-item {
-	display: inline-block;
-	    width: 100%;
-}
-
-.items {
-	width: 50%;
-	display: inline-block;
-	border-bottom: 1px solid #ccc;
-	
-}
-
-#replace-card{
-	background-color: lightgray;
-    padding: 10px 0px;
-}
-
-#temporary-card-section {
-	padding: 45px 0px;
-	width: 75%;
-	margin: 0 auto;
-}
-
-p.temporary-card-para {
-	font-size: 20px;
-	margin: 0px;
-	padding: 15px 0px;
-	line-height: 31px;
-}
-
-.temporary-card-heading {
-	font-size: 32px;
-	margin: 0px;
-}
-
-.replace-card-heading {
-	font-size: 33px;
-	margin: 0px;
-	padding: 8px 0px;
-}
-
-.replace-card-para {
-	font-size: 18px;
-	margin: 0px;
-	padding: 8px 0px;
-}
-
-.replace-card-section {
-	width: 75%;
-	margin: 0 auto;
-}
-.nav-atag-li{
-	text-decoration: none;
-	color: black;
-}
+		body {
+			margin: 0px;
+		}
+		
+		.image-sections {
+			display: inline-block;
+			width: 43%;
+		}
+		
+		.nav-ul-li {
+		    list-style: none;
+		    font-size: 24px;
+		    padding: 31px;
+		    display: inline-block;
+		    font-weight: 800;
+		}
+		
+		ul {
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		.physical-card-image {
+			width: 100%;
+		}
+		
+		.image-section {
+			width: 47%;
+			display: inline-block;
+			vertical-align: top;
+		}
+		
+		.card-para-block {
+			width: 48%;
+			display: inline-block;
+			margin-left: 41px;
+		}
+		
+		.content {
+			width: 51%;
+			display: inline-block;
+			vertical-align: top;
+			font-size: 20px;
+			margin-left: 43px;
+			line-height: 33px;
+		}
+		
+		.nav {
+			width: 90%;
+			margin: 0 auto;
+		}
+		
+		.library-card-span {
+			font-weight: 800;
+		}
+		
+		#contain-section {
+			background-color: black;
+			color: white;
+			padding: 30px 0px;
+		}
+		
+		.container-section {
+			width: 90%;
+			margin: 0 auto;
+			padding: 5px;
+		}
+		
+		.section-container {
+			width: 75%;
+			margin: 0 auto;
+			padding: 10px 0px;
+		}
+		
+		.li-atag {
+			color: white;
+		}
+		
+		.digital-card {
+			width: 100%;
+		}
+		
+		#container {
+			background-color: antiquewhite;
+			padding: 5px;
+		}
+		
+		* {
+			box-sizing: border-box;
+		}
+		
+		.accordion-item {
+			border-bottom: 1px solid #ccc;
+		}
+		
+		.accordion-title {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 24px;
+			cursor: pointer;
+		}
+		
+		.accordion-title h2 {
+			margin: 0;
+		}
+		
+		.accordion-btn {
+			background: none;
+			color: white;
+			border: none;
+			cursor: pointer;
+			font-size: 20px;
+			line-height: 1;
+		}
+		
+		.accordion-btns {
+			background: none;
+			color: black;
+			border: none;
+			cursor: pointer;
+			font-size: 20px;
+			line-height: 1;
+		}
+		
+		.accordion-content {
+			padding: 10px;
+			display: none; /* Hide content by default */
+		}
+		
+		.active {
+			display: block; /* Show content when active */
+		}
+		
+		.digital-button {
+			padding: 11px 20px;
+			background-color: black;
+			color: white;
+			font-size: 17px;
+			font-weight: 800;
+		}
+		
+		.paras {
+			font-size: 21px;
+			margin: 0px;
+			padding: 21px 0px;
+		}
+		
+		.para {
+			margin: 0px;
+		}
+		
+		.heading {
+			margin: 0px;
+		}
+		
+		.temporary-card {
+			display: inline-block;
+			width: 49%;
+			vertical-align: top;
+		}
+		
+		.accordion-item {
+			display: inline-block;
+			    width: 100%;
+		}
+		
+		.items {
+			width: 50%;
+			display: inline-block;
+			border-bottom: 1px solid #ccc;
+			
+		}
+		
+		#replace-card{
+			background-color: lightgray;
+		    padding: 10px 0px;
+		}
+		
+		#temporary-card-section {
+			padding: 45px 0px;
+			width: 75%;
+			margin: 0 auto;
+		}
+		
+		p.temporary-card-para {
+			font-size: 20px;
+			margin: 0px;
+			padding: 15px 0px;
+			line-height: 31px;
+		}
+		
+		.temporary-card-heading {
+			font-size: 32px;
+			margin: 0px;
+		}
+		
+		.replace-card-heading {
+			font-size: 33px;
+			margin: 0px;
+			padding: 8px 0px;
+		}
+		
+		.replace-card-para {
+			font-size: 18px;
+			margin: 0px;
+			padding: 8px 0px;
+		}
+		
+		.replace-card-section {
+			width: 75%;
+			margin: 0 auto;
+		}
+		.nav-atag-li{
+			text-decoration: none;
+			color: black;
+		}
 </style>
 </head>
 <body>
@@ -495,10 +486,7 @@ p.temporary-card-para {
             const btn = title.querySelector('.accordion-btn');
 
             title.addEventListener('click', () => {
-                // Toggle the 'active' class on the content
                 content.classList.toggle('active');
-
-                // Toggle the button text between + and -
                 btn.textContent = content.classList.contains('active') ? '-' : '+';
             });
         });

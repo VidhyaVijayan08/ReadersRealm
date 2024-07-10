@@ -25,6 +25,7 @@ public interface UserDAO {
 	public List<User> retrieveDetails();
 	public List<User> retrievesDetails();
 	void saveBook(Book book) throws SQLException;
-	  public void saveRequestForm(Lending lending);
-
+	public void saveRequestForm(Lending lending);
+	public  List<Book> searchServlet(String bookTitle);
+    public List<User> selectUser(String search);
 }

@@ -69,7 +69,7 @@
 			<ul class="nav-ul">	
 				<li class="nav-ul-li"><a href="listAllLibrarians" style="text-decoration:none; color:white">Users</a></li>
 				<li class="nav-ul-li"><a href="books" style="text-decoration:none; color:white">Books</a></li>	
-				<li class="nav-ul-li"><a href="adminRequestView.jsp" style="text-decoration:none;  color:white">Requested Books</a></li>						
+				<li class="nav-ul-li"><a href="showRequestForm" style="text-decoration:none;  color:white">Requested Books</a></li>						
 				<li class="nav-ul-li"><form action="LogoutServlet" method="post"><button style="color:white">Logout</button></form></li>	
 			</ul>
 		</nav>

@@ -1,6 +1,8 @@
 package com.chainsys.readersrealm.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import com.chainsys.readersrealm.mapper.BookMapper;
 import com.chainsys.readersrealm.mapper.LenderMapper;
+import com.chainsys.readersrealm.mapper.SearchBookMapper;
+import com.chainsys.readersrealm.mapper.SearchUserMapper;
 import com.chainsys.readersrealm.mapper.UserMapper;
 import com.chainsys.readersrealm.model.Book;
 import com.chainsys.readersrealm.model.Lending;
@@ -19,10 +23,12 @@ import com.chainsys.readersrealm.model.User;
 public class UserImpl implements UserDAO {
 
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+ 	JdbcTemplate jdbcTemplate;
 	UserMapper mapper;
 	BookMapper bookMapper;
 	LenderMapper lendingMapper;
+	SearchBookMapper searchBookMapper;
+	SearchUserMapper searchUserMapper;
 
 	public void saveLibrary(User user) throws ClassNotFoundException, SQLException {
 		String save = "insert into users(user_name,mail_id, user_password, user_type, phone_number, location,status)values(?,?,?,?,?,?,?)";
@@ -168,4 +174,20 @@ public class UserImpl implements UserDAO {
 				+ "VALUES (?, ?, ?, ?, ?)";
 		jdbcTemplate.update(add, lending.getBookId(), lending.getUserId(), lending.getBorrowDate(), "Pending", 0);
 	}
+	
+	public  List<Book> searchServlet(String bookTitle)
+	{
+		System.out.println(bookTitle);
+        String save="SELECT  book_id, book_title, author_id, book_category, publication_year, isbn, book_summary, book_rating, book_reviews, book_cover,in_stock,available_books FROM book_details where book_title=?";      
+			return jdbcTemplate.query(save, new SearchBookMapper(),bookTitle);
+    }	
+	
+	@Override
+    public List<User> selectUser(String search) {
+        String select=String.format("select user_name,phone_number,mail_id,user_type,location from users where ( user_name like '%%%s%%' or mail_id like '%%%s%%' or phone_number like '%%%s%%')  and status=1 ",search,search,search,search);
+        List<User> userList=jdbcTemplate.query(select, new SearchUserMapper());
+        return userList;
+    }
+	
+	
 }

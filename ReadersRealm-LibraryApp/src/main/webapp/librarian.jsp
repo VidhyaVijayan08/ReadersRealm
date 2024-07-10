@@ -102,8 +102,8 @@ if (users != null && !users.isEmpty()) {
 %>
 </table>
 <div class="button-container">
-	<form action="SearchServlet" method="get">         
-	 		<input type="text" name="Name" id="Search" placeholder="Search ">
+	<form action="/searchlibrarian" method="get">         
+	 		<input type="text" name="SearchName" id="Search" placeholder="Search ">
 	 	    <input type="submit" class="search-button" value="search" name="action">
 		<button class="search-button"><a href="register.html" class="add-user-link" style="text-decoration:none; color:black;">Add User</a></button>
 	</form>

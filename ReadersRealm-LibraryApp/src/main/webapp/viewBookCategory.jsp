@@ -157,12 +157,6 @@ h2 {
 		<%
  			
 			List<Book> books=(ArrayList<Book>)request.getAttribute("bookList");
- 			/* String category1 = request.getParameter("category"); */
-			/* Book books = new Book();
-			UserImpl userImpl = new UserImpl();
-			
-			List<Book> bookList = userImpl.getAllBooks(category1);
- */
 			for (Book book : books) {
 				String category = book.getBookCategory();
 				byte[] imageBytes = book.getBookCover();

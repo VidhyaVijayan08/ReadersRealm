@@ -144,7 +144,7 @@ form {
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: blueviolet;
             color: white;
             padding: 15px 20px;
             border: none;
@@ -157,7 +157,7 @@ form {
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: blueviolet;
         }
 </style>
 </head>
@@ -197,19 +197,21 @@ form {
 				<label for="phonenumber">Phone Number:</label>
 				<input type="tel" name="phonenumber" id="phonenumber" pattern="[0-9]{10}" title="Phone number must be 10 digits" placeholder="Enter Your Phone Number" required><br>
 
-
 		        <label for="location">Location:</label>
                  <select id="location" name="location" class="form-control" required>
-                   <option value="">Location</option>
-                                <option value="Chennai">Chennai</option>
-                                <option value="Madurai">Madurai</option>
-                                <option value="Kerala">kerala</option>
-                                 <option value="Karnataka">Karnataka</option>
-                                <option value="Hyderabad">Hyderabad</option>
-                            </select>
+                   	<option value="">Location</option>
+                     <option value="Chennai">Chennai</option>
+                     <option value="Madurai">Madurai</option>
+                     <option value="Kerala">kerala</option>
+                     <option value="Karnataka">Karnataka</option>
+                     <option value="Hyderabad">Hyderabad</option>
+                 </select>
 		        <center>
 		            <button>Submit</button>
 		        </center> 
+		         <div class="footer-buttons" style="text-align:center">Already have an account? 
+	       		 	<a href="index.jsp" style="color:blue; text-decoration: none; ">Login</a>
+	       		 </div>
 		    </fieldset> 
 		</form>
 </div>

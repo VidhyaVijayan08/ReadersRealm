@@ -63,9 +63,8 @@
 <body> 
 	<header class="header-container">
 		<div class="logo-container">
-			<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
+			<a href="index.jsp" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block; color: white;  padding: 0px 91px;">Library Application</h1>
 		<nav class="nav" style="display:inline-block;">
 			<ul class="nav-ul">
 				<li class="nav-ul-li"><a href="listAllLibrarians" style="text-decoration:none; color:white">Librarian</a></li>
