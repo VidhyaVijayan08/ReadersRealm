@@ -59,7 +59,7 @@
 	}
 	
 	.logo-img {
-    	height: 95px;
+    	height: 108px;
 	}
 	
 	legend{
@@ -74,10 +74,10 @@
 	}
 		
 	
-	header {
-	    height: 135px;
-	    background-color: gray;
-	}
+header {
+    height: 110px;
+    background-color: gray;
+}
 	
 	fieldset {
 	    margin: 65px 0px 10px 0px;
@@ -88,7 +88,7 @@
 	
 	button{
 		margin: 20px;
-	    background-color: black;
+	    background-color: gray;
 	    border: 1px solid darkgoldenrod;
 	    border-radius: 10px;
 	    color: white;
@@ -97,7 +97,6 @@
 	.logo-atag{
 		display: inline-block;
 	    vertical-align: middle;
-	    padding: 15px 0;
 	}
 	
 	footer{
@@ -111,11 +110,10 @@
 </head>
 <body>
 	<header class="header-container" >
-		<div class="container-logo" style="width: 30%; margin: 0 auto;">
+		<div class="container-logo" style="width: 5%; margin: 0 auto;">
 			<div class="logo-container">
 				<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 			</div>
-			<h1 style="text-align:center; display:inline-block; color:white;  padding: 0px;">Readers Realm</h1>	
 		</div>
 	</header>
 	<main>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 
 .iframeLink{
@@ -31,7 +32,11 @@
 		    width: 60%;
 		}
 		
-		
+		.nav{
+		    display: inline-block;
+    width: 80%;
+    text-align: right;
+		}
 		.nav-ul{
 			display:inline-block;
 			vertical-align: middle;
@@ -43,11 +48,11 @@
 		}
 		
 		.logo-img{ 
-			height: 135px;
+			height: 100px;
 		}
 		
 		header{
-			height: 135px;
+			height: 100px;
 			background-color:gray;
 		}
 		.card {
@@ -75,13 +80,13 @@
 		body{ 
 			margin:0px;
 		}
-		main{
+		/* main{ */
 /* 			background-image:url("bookslibrary.webp");
- */			background-size: cover;
+ */			/* background-size: cover;
 			background-repeat: no-repeat;
-			height:800px;
-		}
-		
+			height:800px; */
+/* 		}
+ */		
 		li{
 			display: inline-block;
 		    list-style: none;
@@ -109,13 +114,11 @@
 		}
 		
 		.logo-img{
-			height: 135px;
+			height: 100px;
 		}
-		
-		header{
-			height: 135px;
-			background-color: gray;
-		}
+	.fa-solid.fa-heart.fa {
+    color: black;
+}
 		
 		.nav-ul {
     		display: inline-block;
@@ -157,6 +160,36 @@
 		    top: 81%;
 		    left: 16%;
 		}
+		footer{
+		background-color: gray;
+		color: white;
+	    padding: 21px 0;
+	    font-size: 19px;
+	    text-align: center;
+	}
+	.book-content{
+		vertical-align: middle;
+	    width: 49%;
+	    display: inline-block;
+	}
+	.fa-solid{
+		color:white;
+	}
+	.logo-atag{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.card-details {
+	    color: black;
+	}
+	
+	.fa-solid {
+	    color: white;
+	    padding: 0 5px;
+	}
+	i.fa-solid.fa-heart.fa:hover {
+    transform: scale(1.25);
+}
 	</style>
 </head>
 <body>
@@ -164,13 +197,16 @@
 		<div class="logo-container">
 		<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block; width: 19%; color:white; padding: 0px 91px;">Readers Realm</h1>
+	
 		<nav class="nav" style="display:inline-block;">
+			<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart"></i></a>
+		<a href="" class="logo-atag"> <i class="fa-solid fa-user"></i> </a>
 			<ul class="nav-ul">
 				<li class="nav-ul-li"><a href="library.jsp" style="text-decoration: none; color: white;">Card</a></li>
 				<li class="nav-ul-li"><a href="view.jsp" style="text-decoration: none; color: white;">EBook</a></li>
 				<li class="nav-ul-li"><a href="books" style="text-decoration:none; color:white">Books</a></li>
 				<li class="nav-ul-li"><a href="showUserRequestForm" style="text-decoration:none;  color:white">Requested Books</a></li>						
+				<li class="nav-ul-li"><a href="ourBooks.jsp" style="text-decoration:none; color:white">Our book</a></li>
 				<li class="nav-ul-li"><a href="about.jsp" style="text-decoration:none; color:white">About Us</a></li>
   				<li class="nav-ul-li"><form action="index.jsp"><button style="color:white">Logout</button></form></li>		
 			</ul> 
@@ -200,6 +236,7 @@
 						Folk Tale
 					</p>
 				</div> 
+				<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>
 		</div>
 	</a>
 	
@@ -213,6 +250,7 @@
 						Fantasy
 					</p>
 				</div> 
+			    <a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>
 		</div>
 	</a>
 
@@ -226,6 +264,7 @@
 							Fantasy
 						</p>
 					</div> 
+					<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>
 			</div>
 		</a>
 		
@@ -239,6 +278,7 @@
 							Fiction
 						</p>
 					</div> 
+					<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>
 			</div>
 		</a>
 		
@@ -252,6 +292,8 @@
 							Fantasy
 						</p>
 					</div> 
+				<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>
+					
 			</div>
 		</a>
 </div>
@@ -268,6 +310,7 @@
 						Folk Tale
 					</p>
 				</div> 
+		     	<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>	
 			</div>
 		</a>
 		<a class="iframeLink" href="https://www.cdc.gov/ncbddd/actearly/documents/amazing_me_final_version_508.pdf"> 
@@ -280,6 +323,7 @@
 						Folk Tale
 					</p>
 				</div> 
+			    <a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>	
 			</div>
 		</a>
 
@@ -293,13 +337,15 @@
 						Folk Tale
 					</p>
 				</div> 
+				<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart fa"></i></a>
 			</div>
 		</a>
 	</div>
 	</div>
 	</main>
-	<footer>
-	</footer>
+	<footer style="color: white">
+ 	 &copy;  ReadersRealm.com / All rights reserved
+     </footer>
 
 </body>
 </html>

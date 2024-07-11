@@ -28,4 +28,5 @@ public interface UserDAO {
 	public void saveRequestForm(Lending lending);
 	public  List<Book> searchServlet(String bookTitle);
     public List<User> selectUser(String search);
+	public List<Lending> dateFromTo(String fromDate, String toDate);
 }

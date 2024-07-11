@@ -311,5 +311,14 @@ public class UserController {
         model.addAttribute("users",users);
         return "users.jsp";
     }
+	
+	
+	@GetMapping("/Date")
+    public String date(@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate,Model model)
+    {
+        List<Lending> lists1=userDAO.dateFromTo(fromDate,toDate);
+        model.addAttribute("lists1",lists1);
+        return "adminRequestView.jsp";
+    }
 
 }

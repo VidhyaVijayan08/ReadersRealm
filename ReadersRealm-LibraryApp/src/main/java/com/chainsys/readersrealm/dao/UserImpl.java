@@ -188,6 +188,22 @@ public class UserImpl implements UserDAO {
         List<User> userList=jdbcTemplate.query(select, new SearchUserMapper());
         return userList;
     }
+
+	/*
+	 * @Override public List<Lending> dateFromTo(String fromDate, String toDate) {
+	 * String sql =
+	 * "SELECT lending_id, book_id, user_id, due_date, borrow_date, status, fine  FROM lending_details where due_date>=? and due_date<=? and borrow_date>=? and borrow_date<=?"
+	 * ; System.out.println(jdbcTemplate.query(sql, new
+	 * LenderMapper(),fromDate,toDate,fromDate,toDate)); List<Lending> lists1 =
+	 * jdbcTemplate.query(sql, new LenderMapper(),fromDate,toDate,fromDate,toDate);
+	 * return lists1; }
+	 */
 	
-	
+	@Override
+	public List<Lending> dateFromTo(String fromDate, String toDate) {
+	    String sql = "SELECT lending_id, book_id, user_id, due_date, borrow_date, status, fine FROM lending_details WHERE due_date >= ? AND due_date <= ? || borrow_date >= ? AND borrow_date <= ?";
+	    System.out.println(jdbcTemplate.query(sql, new LenderMapper(), fromDate, toDate, fromDate, toDate));
+	    List<Lending> lists1 = jdbcTemplate.query(sql, new LenderMapper(), fromDate, toDate, fromDate, toDate);
+	    return lists1;
+	}
 }

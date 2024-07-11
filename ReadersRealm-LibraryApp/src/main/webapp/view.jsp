@@ -73,13 +73,13 @@
 			transform: scale(1.05);
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 		}
+		
 </style>
 <body>
 <header class="header-container">
 		<div class="logo-container">
 			<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block; color:white;  padding: 0 91px;">Library Application</h1>
 	
 	</header>
 	<main>
