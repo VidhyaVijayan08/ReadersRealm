@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.chainsys.readersrealm.mapper.BookImageMapper;
 import com.chainsys.readersrealm.mapper.BookMapper;
 import com.chainsys.readersrealm.mapper.LenderMapper;
 import com.chainsys.readersrealm.mapper.SearchBookMapper;
@@ -29,6 +30,7 @@ public class UserImpl implements UserDAO {
 	LenderMapper lendingMapper;
 	SearchBookMapper searchBookMapper;
 	SearchUserMapper searchUserMapper;
+	BookImageMapper bookImageMapper;
 
 	public void saveLibrary(User user) throws ClassNotFoundException, SQLException {
 		String save = "insert into users(user_name,mail_id, user_password, user_type, phone_number, location,status)values(?,?,?,?,?,?,?)";
@@ -144,25 +146,47 @@ public class UserImpl implements UserDAO {
 		String sql;
 		if (category == null || category.isEmpty()) {
 			sql = "SELECT book_id,book_title,author_id,book_category,publication_year,isbn,book_rating,book_reviews,in_stock,available_books,\r\n"
-					+ "book_cover, book_summary FROM book_details";
+					+ "book_cover, book_summary,likes FROM book_details";
 			return jdbcTemplate.query(sql, new BookMapper());
 		} else {
 			sql = "SELECT book_id,book_title,author_id,book_category,publication_year,isbn,book_rating,book_reviews,in_stock,available_books,\r\n"
-					+ "book_cover, book_summary FROM book_details WHERE lower(book_category) = lower(?)";
+					+ "book_cover, book_summary,likes FROM book_details WHERE lower(book_category) = lower(?)";
 			return jdbcTemplate.query(sql, new BookMapper(), category.replace("@@", " "));
 		}
 	}
+	
 
 	public List<Book> retrievesDetail(Book book) {
-		String sql = "SELECT book_id,book_title,author_id,book_category,publication_year,isbn,book_rating,book_reviews,in_stock,available_books, book_cover, book_summary FROM book_details"
-				+ "book_reviews, book_cover, available_books FROM book_details WHERE book_id = ?";
+		String sql = "SELECT book_id,book_title,author_id,book_category,publication_year,isbn,book_rating,book_reviews,in_stock,available_books, book_cover, book_summary,likes FROM book_details WHERE book_id = ?";
 
+		System.out.println(jdbcTemplate.query(sql, new BookMapper(), book.getBookId()));
 		return jdbcTemplate.query(sql, new BookMapper(), book.getBookId());
 	}
 
 	@Override
 	public void saveBook(Book book) throws SQLException {
-		String sql = "INSERT INTO book_details (book_id, book_title, author_id, book_category, publication_year, isbn, book_summary, book_rating, book_reviews, book_cover, in_stock, available_books) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO book_details (book_id, book_title, author_id, book_category, publication_year, isbn, book_summary, book_rating, book_reviews, book_cover, in_stock, available_books,likes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, book.getBookId(), book.getBookTitle(), book.getAuthorId(), book.getBookCategory(),
+				book.getPublicationYear(), book.getIsbn(), book.getBookSummary(), book.getBookRating(),
+				book.getBookReviews(), book.getBookCover(), book.getInStock(), book.getAvailableBooks());
+	}
+	
+	
+	@Override
+	public List<Book> retrievesDetailsWishList(int bookId) {
+		String sql = "SELECT book_id, book_title, author_id, book_category, publication_year, isbn, book_rating, book_reviews, in_stock, available_books, book_cover, book_summary,likes  FROM book_details WHERE book_id = ? and  likes=?";
+		return jdbcTemplate.query(sql, new BookMapper(), bookId, "Liked");
+	}
+	
+	@Override
+	public List<Book> retrievesDetailsWishLists() {
+		String sql = "SELECT book_id, book_title, author_id, book_category, publication_year, isbn, book_rating, book_reviews, in_stock, available_books, book_cover, book_summary,likes  FROM book_details WHERE likes='liked'";
+		return jdbcTemplate.query(sql, new BookMapper());
+	}
+	
+	@Override
+	public void saveBookWishList(Book book) {
+		String sql = "INSERT INTO wishlist (book_id, book_title, author_id, book_category, publication_year, isbn, book_summary, book_rating, book_reviews,in_stock, available_books, book_cover,likes  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, book.getBookId(), book.getBookTitle(), book.getAuthorId(), book.getBookCategory(),
 				book.getPublicationYear(), book.getIsbn(), book.getBookSummary(), book.getBookRating(),
 				book.getBookReviews(), book.getBookCover(), book.getInStock(), book.getAvailableBooks());
@@ -173,6 +197,12 @@ public class UserImpl implements UserDAO {
 		String add = "INSERT INTO lending_details (book_id, user_id, borrow_date, status, fine) "
 				+ "VALUES (?, ?, ?, ?, ?)";
 		jdbcTemplate.update(add, lending.getBookId(), lending.getUserId(), lending.getBorrowDate(), "Pending", 0);
+	}
+	
+	public void updateLike(int bookId) {
+		
+		String update = "UPDATE book_details SET likes = ? WHERE book_id = ?";
+		jdbcTemplate.update(update,"Liked", bookId);
 	}
 	
 	public  List<Book> searchServlet(String bookTitle)
@@ -188,16 +218,6 @@ public class UserImpl implements UserDAO {
         List<User> userList=jdbcTemplate.query(select, new SearchUserMapper());
         return userList;
     }
-
-	/*
-	 * @Override public List<Lending> dateFromTo(String fromDate, String toDate) {
-	 * String sql =
-	 * "SELECT lending_id, book_id, user_id, due_date, borrow_date, status, fine  FROM lending_details where due_date>=? and due_date<=? and borrow_date>=? and borrow_date<=?"
-	 * ; System.out.println(jdbcTemplate.query(sql, new
-	 * LenderMapper(),fromDate,toDate,fromDate,toDate)); List<Lending> lists1 =
-	 * jdbcTemplate.query(sql, new LenderMapper(),fromDate,toDate,fromDate,toDate);
-	 * return lists1; }
-	 */
 	
 	@Override
 	public List<Lending> dateFromTo(String fromDate, String toDate) {
@@ -206,4 +226,10 @@ public class UserImpl implements UserDAO {
 	    List<Lending> lists1 = jdbcTemplate.query(sql, new LenderMapper(), fromDate, toDate, fromDate, toDate);
 	    return lists1;
 	}
+	
+	@Override
+    public Book getBase64BookImage(int bookId) {
+        String query = "SELECT book_cover FROM book_details WHERE book_id = ?";
+        return jdbcTemplate.queryForObject(query, new BookImageMapper(), new Object[] { bookId });
+    }
 }

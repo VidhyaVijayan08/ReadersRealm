@@ -132,11 +132,9 @@ h2 {
 						method="post">
 						<button>Logout</button>
 					</form></li>
-
 			</ul>
 		</nav>
 	</header>
-
 <main>
 	<h2>Products</h2>
 	<%
@@ -144,7 +142,6 @@ h2 {
 	UserImpl userImpl = (UserImpl) context.getBean("userImpl");
   String bookTitle=request.getParameter("BookTitle");	
 			List<Book> bookList = userImpl.searchServlet(bookTitle);
-
 			for (Book book : bookList) {
 				String category = book.getBookCategory();
 				byte[] imageBytes = book.getBookCover();

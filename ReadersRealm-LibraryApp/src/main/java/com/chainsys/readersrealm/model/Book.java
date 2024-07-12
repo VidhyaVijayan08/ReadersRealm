@@ -16,13 +16,27 @@ public class Book {
 		String bookReviews;
 		byte[] bookCover;
 		int availableBooks;
+		String likes;
 		
+		public String getLikes() {
+			return likes;
+		}
+
+		public void setLikes(String likes) {
+			this.likes = likes;
+		}
+
 		public Book() {
 			
 		}
-		
+
+		public int getAvailableBooks() {
+			return availableBooks;
+		}
+
 		public Book(int bookId, String bookTitle, int authorId, String bookCategory, int publicationYear, String isbn,
-				String bookSummary, int inStock, int bookRating, String bookReviews, byte[] bookCover, int availableBooks) {
+				String bookSummary, int inStock, int bookRating, String bookReviews, byte[] bookCover,
+				int availableBooks, String likes) {
 			super();
 			this.bookId = bookId;
 			this.bookTitle = bookTitle;
@@ -36,10 +50,7 @@ public class Book {
 			this.bookReviews = bookReviews;
 			this.bookCover = bookCover;
 			this.availableBooks = availableBooks;
-		}
-
-		public int getAvailableBooks() {
-			return availableBooks;
+			this.likes = likes;
 		}
 
 		public void setAvailableBooks(int availableBooks) {
@@ -124,7 +135,8 @@ public class Book {
 		public String toString() {
 			return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", authorId=" + authorId + ", bookCategory="
 					+ bookCategory + ", publicationYear=" + publicationYear + ", isbn=" + isbn + ", bookSummary="
-					+ bookSummary + ", inStock=" + inStock + ", bookRating=" + bookRating + ", bookReviews=" + bookReviews
-					+ ", bookCover=" + Arrays.toString(bookCover) + ", availableBooks=" + availableBooks + "]";
+					+ bookSummary + ", inStock=" + inStock + ", bookRating=" + bookRating + ", bookReviews="
+					+ bookReviews + ", bookCover=" + Arrays.toString(bookCover) + ", availableBooks=" + availableBooks
+					+ ", likes=" + likes + "]";
 		}
 }

@@ -180,11 +180,11 @@
 		
 		.accordion-content {
 			padding: 10px;
-			display: none; /* Hide content by default */
+			display: none; 
 		}
 		
 		.active {
-			display: block; /* Show content when active */
+			display: block; 
 		}
 		
 		.digital-button {
@@ -270,6 +270,44 @@
 			text-decoration: none;
 			color: black;
 		}
+		
+	.nav-ul{
+			display:inline-block;
+			vertical-align: middle;
+		}
+		
+		.logo-container{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.logo-img{
+			height: 100px;
+		}
+		.fa-solid.fa-heart.fa {
+	   		color: black;
+		}
+		
+		.nav-ul {
+    		display: inline-block;
+    		vertical-align: middle;
+	    	padding: 0px;
+		}
+		button{
+			cursor: pointer;
+		    background: none;
+		    border: none;
+		    font-size: 22px;
+		    font-weight: 600;
+		    color: white;
+    		font-family: none;
+		}
+		
+		header{
+			height: 100px;
+			background-color:gray;
+		    margin: 0px 0px 50px 0px;
+		}
 </style>
 </head>
 <body>
@@ -277,21 +315,23 @@
 
 <header class="header-container">
 		<div class="logo-container">
-		<a href="index.html" class="logo-atag"><img src="logo.jpg" alt="Library Logo "class="logo-img" ></a>
+		<a href="index.html" class="logo-atag"><img src="images/readersrealmlogo.png" alt="Library Logo"class="logo-img" ></a>
 		</div>
-		<h1 style="text-align:center; display:inline-block; width: 39%;  padding: 0px 91px;">Library Application</h1>
-		<nav class="navs" style="display:inline-block;">
+	
+		<nav class="nav" style="display:inline-block;">
+			<a href="wishList.jsp" class="wishlist-atag"><i class="fa-solid fa-heart"></i></a>
+		<a href="" class="logo-atag"> <i class="fa-solid fa-user"></i> </a>
 			<ul class="nav-ul">
-			<li class="nav-ul-li">
-			 <a href="view.html" style="text-decoration: none; color: black;">EBook</a>								
-			</li>
-				<li class="nav-ul-li-atag"><a href="viewBookCategory.jsp" style="text-decoration:none; color:black">Books</a></li>
-				<li class="nav-ul-li-atag"><a href="about.html" style="text-decoration:none; color:black">About Us</a></li>
-  				<li class="nav-ul-li-atag"><form action="LogoutServlet" method="post"><button>Logout</button></form></li>		
+				<li class="nav-ul-li"><a href="library.jsp" style="text-decoration: none; color: white;">Card</a></li>
+				<li class="nav-ul-li"><a href="view.jsp" style="text-decoration: none; color: white;">EBook</a></li>
+				<li class="nav-ul-li"><a href="books" style="text-decoration:none; color:white">Books</a></li>
+				<li class="nav-ul-li"><a href="showUserRequestForm" style="text-decoration:none;  color:white">Requested Books</a></li>						
+				<li class="nav-ul-li"><a href="ourBooks.jsp" style="text-decoration:none; color:white">Our book</a></li>
+				<li class="nav-ul-li"><a href="about.jsp" style="text-decoration:none; color:white">About Us</a></li>
+  				<li class="nav-ul-li"><form action="index.jsp"><button style="color:white">Logout</button></form></li>		
 			</ul> 
 		</nav>
-	</header>
-
+</header>
 
 <main>
 	<div class="containers">

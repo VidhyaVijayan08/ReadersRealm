@@ -312,7 +312,6 @@ public class UserController {
         return "users.jsp";
     }
 	
-	
 	@GetMapping("/Date")
     public String date(@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate,Model model)
     {
@@ -320,5 +319,101 @@ public class UserController {
         model.addAttribute("lists1",lists1);
         return "adminRequestView.jsp";
     }
+	
+	
+	@GetMapping("/BooksWishList")
+	public String getBooksWishList(@RequestParam(required = false) String category, Model model) {
+		List<Book> bookList = userImpl.getAllBooks(category);
+		model.addAttribute("bookList", bookList);
+		return "viewMore.jsp";
+	}
+	
+	
+	@PostMapping("/SaveBooksWishlist")
+	public String saveBooks(@RequestParam("bookId") int bookId, @RequestParam("bookTitle") String bookTitle,
+			@RequestParam("authorId") int authorId, @RequestParam("bookCategory") String bookCategory,
+			@RequestParam("publicationYear") int publicationYear, @RequestParam("isbn") String isbn,
+			@RequestParam("bookSummary") String bookSummary, @RequestParam("bookRating") int bookRating,
+			@RequestParam("bookReview") String bookReview, @RequestParam("bookInStock") int inStock,
+			@RequestParam("availableBook") int availableBook, @RequestParam("filePart") MultipartFile filePart,
+			RedirectAttributes redirectAttributes , Model model) throws IOException, SQLException {
+		byte[] images = null;
+		if (!filePart.isEmpty()) {
+			images = filePart.getBytes();
+		}
+		Book book = new Book();
+		book.setBookId(bookId);
+		book.setBookTitle(bookTitle);
+		book.setAuthorId(authorId);
+		book.setBookCategory(bookCategory);
+		book.setPublicationYear(publicationYear);
+		book.setIsbn(isbn);
+		book.setBookSummary(bookSummary);
+		book.setBookRating(bookRating);
+		book.setBookReviews(bookReview);
+		book.setInStock(inStock);
+		book.setAvailableBooks(availableBook);
+		book.setBookCover(images);
+		userImpl.saveBook(book);
+		List<Book> booklist = userImpl.retrievesDetail(book);
+		System.out.println(booklist);
+		model.addAttribute("wishlists", booklist);
+
+		redirectAttributes.addFlashAttribute("message", "Book saved successfully");
+		return "redirect:/bookList"; // Redirect to book list page or appropriate page
+	}
+	
+	
+	
+	@PostMapping("/SaveBooksWishlists")
+	public String saveBooks(@RequestParam("bookId") int bookId, @RequestParam("bookTitle") String bookTitle,
+			@RequestParam("authorId") int authorId, @RequestParam("bookCategory") String bookCategory,
+			@RequestParam("publicationYear") int publicationYear, @RequestParam("isbn") String isbn,
+			@RequestParam("bookSummary") String bookSummary, @RequestParam("bookRating") int bookRating,
+			@RequestParam("bookReview") String bookReview, @RequestParam("bookInStock") int inStock,
+			@RequestParam("availableBook") int availableBook, @RequestParam("filePart") MultipartFile filePart,
+			RedirectAttributes redirectAttributes , Model model, HttpSession session) throws IOException, SQLException {
+		byte[] images = null;
+		if (!filePart.isEmpty()) {
+			images = filePart.getBytes();
+		}
+		Book book = new Book();
+		book.setBookId(bookId);
+		book.setBookTitle(bookTitle);
+		book.setAuthorId(authorId);
+		book.setBookCategory(bookCategory);
+		book.setPublicationYear(publicationYear);
+		book.setIsbn(isbn);
+		book.setBookSummary(bookSummary);
+		book.setBookRating(bookRating);
+		book.setBookReviews(bookReview);
+		book.setInStock(inStock);
+		book.setAvailableBooks(availableBook);
+		book.setBookCover(images);
+		book.setLikes("Not Liked");
+		session.setAttribute("bookId", bookId);
+		userImpl.saveBookWishList(book);
+		redirectAttributes.addFlashAttribute("message", "Book saved successfully");
+		return "redirect:/bookList"; 
+	}
+	
+	@RequestMapping("/retrieveWish")
+	public String getBookWish(@RequestParam("bookId") int bookId,HttpSession session, Model model)
+	{		
+	userImpl.updateLike(bookId);
+	List<Book> booklist = userImpl.retrievesDetailsWishList(bookId);
+	System.out.println(booklist);
+	model.addAttribute("wishlistbook", booklist);
+	return "wishList.jsp";
+	}
+	
+	@RequestMapping("/retrieve")
+	public String getBookWishList( HttpSession session, Model model) {
+		System.out.println("HIIIII");
+		List<Book> booklist =userImpl.retrievesDetailsWishLists();
+		System.out.println(booklist);
+		model.addAttribute("wishlistbooks", booklist);
+		return "wishListBooks.jsp";
+	}
 
 }

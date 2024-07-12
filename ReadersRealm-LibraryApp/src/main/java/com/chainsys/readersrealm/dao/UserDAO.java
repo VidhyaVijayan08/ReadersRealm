@@ -29,4 +29,8 @@ public interface UserDAO {
 	public  List<Book> searchServlet(String bookTitle);
     public List<User> selectUser(String search);
 	public List<Lending> dateFromTo(String fromDate, String toDate);
+	public void saveBookWishList(Book book);
+	public List<Book> retrievesDetailsWishLists();
+    public Book getBase64BookImage(int bookId);
+	public List<Book> retrievesDetailsWishList(int bookId);
 }

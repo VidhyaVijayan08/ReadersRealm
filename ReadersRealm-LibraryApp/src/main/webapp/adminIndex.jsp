@@ -58,6 +58,12 @@
 		    font-weight: 600;
 		}
 		
+		.nav{
+			display: inline-block;
+		    width: 83%;
+		    text-align: end;
+		}
+		
 	</style>
 </head>
 <body> 
@@ -77,10 +83,8 @@
 	</header>
 	<main>
 	</main>
-	
 	<footer style="color: white">
  	 &copy;  ReadersRealm.com / All rights reserved
      </footer>
-
 </body>
 </html>
